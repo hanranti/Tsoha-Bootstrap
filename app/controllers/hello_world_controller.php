@@ -5,9 +5,23 @@ class HelloWorldController extends BaseController {
     public static function index() {
         // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
         //echo 'Tämä on etusivu!';
-        View::make("suunniteltmat/default.html");
-    } public static function user() {
-        View::make("suunniteltmat/user.html");
+        View::make("suunnitelmat/default.html");
+    }
+
+    public static function user() {
+        View::make("suunnitelmat/user.html");
+    }
+
+    public static function chore() {
+        View::make("suunnitelmat/chore.html");
+    }
+
+    public static function signup() {
+        View::make("suunnitelmat/signup.html");
+    }
+
+    public static function logout() {
+        View::make("suunnitelmat/logout.html");
     }
 
     public static function sandbox() {

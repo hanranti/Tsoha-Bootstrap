@@ -1,9 +1,20 @@
 <?php
 
-  $routes->get('/', function() {
+$routes->get('/', function() {
     HelloWorldController::index();
-  });
-
-  $routes->get('/hiekkalaatikko', function() {
+});
+$routes->get('/user', function() {
+    HelloWorldController::user();
+});
+$routes->get('/chore', function() {
+    HelloWorldController::chore();
+});
+$routes->get('/signup', function() {
+    HelloWorldController::signup();
+});
+$routes->get('/logout', function() {
+    HelloWorldController::logout();
+});
+$routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
-  });
+});
