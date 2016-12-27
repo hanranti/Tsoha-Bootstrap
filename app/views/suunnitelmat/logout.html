@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>logout</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha">Etusivu</a></li>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha/signup">Rekisteröidy</a></li>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha/logout">Kirjaudu ulos</a></li>
-            </ul>
-        </nav>
+        {% extends "default.html" %}
+        {% block content %}
         <div>
-            <p>Olet nyt kirjautunut ulos palvelusta.</p>
+            <h1>Olet nyt kirjautunut ulos palvelusta.</h1>
         </div>
-    </body>
-</html>
+        {% endblock %}

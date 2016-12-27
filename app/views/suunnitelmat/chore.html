@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Askare</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha">Etusivu</a></li>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha/signup">Rekisteröidy</a></li>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha/logout">Kirjaudu ulos</a></li>
-            </ul>
-        </nav>
+        {% extends "default.html" %}
+        {% block content %}
         <div>
             <h1>Tiedot</h1>
             <p>Askare <input name="chore" type="text"></p>
@@ -22,8 +9,7 @@
             <h2>Lisää luokka</h2>
             <input name="class" type="text">
             <input name="sendClass" type="submit">
-            <h1>Lisää tärkeysastetta</h1>
+            <h2>Lisää tärkeysastetta</h2>
             <input name="sendPrioritize" type="submit">
         </div>
-    </body>
-</html>
+        {% endblock %}

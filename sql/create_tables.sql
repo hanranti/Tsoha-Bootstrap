@@ -7,7 +7,7 @@ CREATE TABLE Askare(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   info varchar(50) NOT NULL,
-  deadline TIMESTAMP NOT NULL,
+  deadline DATE NOT NULL,
   tarkeysaste INTEGER,
   kayttaja varchar(50) REFERENCES Kayttaja
 );
@@ -24,8 +24,8 @@ CREATE TABLE AskareMuistilista(
   askareid INTEGER REFERENCES Askare(id),
   muistilistaid INTEGER REFERENCES Muistilista(id)
 );
-CREATE TABLE MuistilistaLuokka(
+CREATE TABLE AskareLuokka(
   id SERIAL PRIMARY KEY,
-  muistilistaid INTEGER REFERENCES Muistilista(id),
+  askareid INTEGER REFERENCES Askare(id),
   luokkaid INTEGER REFERENCES Luokka(id)
 );

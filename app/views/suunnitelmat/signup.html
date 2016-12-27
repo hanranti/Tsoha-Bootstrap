@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Rekisteröityminen</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <nav>
-            <ul>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha">Etusivu</a></li>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha/signup">Rekisteröidy</a></li>
-                <li><a href="http://hanranti.users.cs.helsinki.fi/tsoha/logout">Kirjaudu ulos</a></li>
-            </ul>
-        </nav>
-        <div>
-            <p>
-                <label>Käyttäjätunnus</label>
-                <input name="Käyttäjätunnus" type="text">
-            </p>
-            <p>
-                <label>Salasana</label>
-                <input name="password1" type="password" ng-model="password1">
-            </p>
-            <p>
-                <label>Salasana uudestaan</label>
-                <input name="password2" type="password" ng-model="password2" ng-required ng-match="password1">
-            </p>
-            <button>Rekisteröidy</button></div>
-    </body>
-</html>
+{% extends "default.html" %}
+{% block content %}
+<div>
+    <p>
+        <label>Käyttäjätunnus</label>
+        <input name="Käyttäjätunnus" type="text">
+    </p>
+    <p>
+        <label>Salasana</label>
+        <input name="password1" type="password" ng-model="password1">
+    </p>
+    <p>
+        <label>Salasana uudestaan</label>
+        <input name="password2" type="password" ng-model="password2" ng-required ng-match="password1">
+    </p>
+    <button class="btn btn-success">Rekisteröidy</button>
+</div>
+{% endblock %}
