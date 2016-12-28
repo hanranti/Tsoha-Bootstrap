@@ -27,5 +27,5 @@ CREATE TABLE AskareMuistilista(
 CREATE TABLE AskareLuokka(
   id SERIAL PRIMARY KEY,
   askareid INTEGER REFERENCES Askare(id),
-  luokkaid INTEGER REFERENCES Luokka(id)
+  luokka varchar(50) REFERENCES Luokka(name)
 );

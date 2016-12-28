@@ -5,6 +5,9 @@ INSERT INTO Askare (name, info, deadline, tarkeysaste, kayttaja) VALUES ('Askare
 INSERT INTO Askare (name, info, deadline, tarkeysaste, kayttaja) VALUES ('Askare2', 'info', '2018-01-01', '3', 'Henri');
 INSERT INTO Luokka (name) VALUES ('tyo');
 INSERT INTO Luokka (name) VALUES ('opiskelu');
-INSERT INTO Muistilista (name) VALUES ('tyo ja opiskelu');
-INSERT INTO AskareMuistilista (askareid, muistilistaid) VALUES (SELECT id FROM Askare WHERE name='Askare', SELECT id FROM Muistilista WHERE name='tyo ja opiskelu');
-INSERT INTO AskareLuokka (askareid, luokkaid) VALUES (SELECT id FROM Askare WHERE name='Askare', SELECT id FROM Luokka WHERE name='tyo');
+INSERT INTO Muistilista (name, kayttaja) VALUES ('tyo ja opiskelu', 'Kalle');
+INSERT INTO Muistilista (name, kayttaja) VALUES ('opiskelu', 'Henri');
+INSERT INTO AskareMuistilista (askareid, muistilistaid) VALUES ('1', '1');
+INSERT INTO AskareMuistilista (askareid, muistilistaid) VALUES ('2', '2');
+INSERT INTO AskareLuokka (askareid, luokka) VALUES ('1', 'tyo');
+INSERT INTO AskareLuokka (askareid, luokka) VALUES ('2', 'opiskelu');
