@@ -12,8 +12,7 @@ CREATE TABLE Askare(
   kayttaja varchar(50) REFERENCES Kayttaja
 );
 CREATE TABLE Luokka(
-  id SERIAL PRIMARY KEY,
-  name varchar(50) NOT NULL
+  name varchar(50) PRIMARY KEY NOT NULL
 );
 CREATE TABLE Muistilista(
   id SERIAL PRIMARY KEY,
