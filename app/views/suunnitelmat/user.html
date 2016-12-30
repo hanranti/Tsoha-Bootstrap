@@ -13,9 +13,14 @@
             </tr>
         </thead>
         <tbody>
+            {% for chore in chores %}
             <tr>
-
+                <td><a href="http://hanranti.users.cs.helsinki.fi/tsoha/chore/{{chore.id}}">{{chore.name}}</a></td>
+                <td>{{chore.info}}</td>
+                <td>{{chore.tarkeysaste}}</td>
+                <td></td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
     <h1>Muistilista luokittain</h1>

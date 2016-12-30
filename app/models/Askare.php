@@ -16,7 +16,7 @@ class Askare extends BaseModel {
         if ($row) {
             $askare = new Askare(array(
                 'id' => $row['id'],
-                'name' => $row['kayttaja'],
+                'name' => $row['name'],
                 'info' => $row['info'],
                 'deadline' => $row['deadline'],
                 'tarkeysaste' => $row['tarkeysaste'],
