@@ -1,15 +1,16 @@
         {% extends "suunnitelmat/default.html" %}
         {% block content %}
         <div>
-            <h1>Tiedot</h1>
-            <p>Askare <input name="chore" type="text"></p>
-            <p>Tiedot <input name="details" type="text"></p>
-            <p>Deadline <input name="deadline" type="text"></p>
+            <h1>{{chore.name}}</h1>
+            <h2>Tiedot</h2>
+            <p>Askare <input name="chore" type="text" value="{{chore.name}}"></p>
+            <p>Tiedot <input name="details" type="text" value="{{chore.info}}"></p>
+            <p>Deadline <input name="deadline" type="text"value="{{chore.deadline}}"></p>
             <input name="sendInformation" type="submit">
             <h2>Lisää luokka</h2>
             <input name="class" type="text">
             <input name="sendClass" type="submit">
             <h2>Lisää tärkeysastetta</h2>
-            <input name="sendPrioritize" type="submit">
+            <p><input name="sendPrioritize" type="submit"> {{chore.tarkeysaste}}</p>
         </div>
         {% endblock %}

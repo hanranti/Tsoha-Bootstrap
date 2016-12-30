@@ -6,8 +6,8 @@ $routes->get('/', function() {
 $routes->get('/user', function() {
     HelloWorldController::user();
 });
-$routes->get('/chore', function() {
-    HelloWorldController::chore();
+$routes->get('/chore/:id', function($id) {
+    ChoreController::chore($id);
 });
 $routes->get('/signup', function() {
     HelloWorldController::signup();
