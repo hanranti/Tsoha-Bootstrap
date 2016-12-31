@@ -24,12 +24,12 @@ class Kayttaja extends BaseModel {
 	}
 
 	public static function count(){
-		$query = DB::connection()->prepare('SELECT COUNT(*) AS Maara FROM Kayttaja');
+		$query = DB::connection()->prepare('SELECT COUNT(*) AS maara FROM Kayttaja LIMIT 1');
 		$query->execute();
 		$row = $query->fetch();
 
 		if ($row) {
-			$count = $row['Maara'];
+			$count = $row['maara'];
 
 			return $count;
 		}

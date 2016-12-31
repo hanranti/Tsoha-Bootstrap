@@ -20,7 +20,7 @@ class Askare extends BaseModel {
 			                'info' => $row['info'],
 			                'deadline' => $row['deadline'],
 			                'tarkeysaste' => $row['tarkeysaste'],
-			                'kayttaja' => $row['kayttaja']
+			                'kayttajaid' => $row['kayttajaid']
 			            ));
 			
 			return $askare;
@@ -30,7 +30,7 @@ class Askare extends BaseModel {
 	}
 	
 	public static function allByUser($kayttaja) {
-		$query = DB::connection()->prepare('SELECT * FROM Askare WHERE kayttaja = :kayttaja');
+		$query = DB::connection()->prepare('SELECT * FROM Askare WHERE kayttajaid = :kayttajaid');
 		$query->execute(array('kayttaja' => $kayttaja));
 		$rows = $query->fetchAll();
 		$askareet = array();
@@ -62,11 +62,24 @@ class Askare extends BaseModel {
 			                'info' => $row['info'],
 			                'deadline' => $row['deadline'],
 			                'tarkeysaste' => $row['tarkeysaste'],
-			                'kayttaja' => $row['kayttaja']
+			                'kayttajaid' => $row['kayttajaid']
 			            ));
 		}
 		
 		return $askareet;
 	}
 	
+	public static function count() {
+		$query = DB::connection()->prepare('SELECT COUNT(*) AS maara FROM Askare LIMIT 1');
+		$query->execute();
+		$row = $query->fetch();
+
+		if ($row) {
+			$count = $row['maara'];
+
+			return $count;
+		}
+
+		return NULL;
+	}
 }

@@ -1,9 +1,11 @@
 <?php
 
+require 'app/models/Kayttaja.php';
+
 class UserController extends BaseController {
 	public static function user($id){
-		$user = User::find($id);
+		$user = Kayttaja::find($id);
 		
-		View::make('suunnitelmat/user.html', array(user => $user));
+		View::make('suunnitelmat/user.html', array('user' => $user));
 	}
 }

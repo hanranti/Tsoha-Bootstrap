@@ -20,6 +20,9 @@ $routes->get('/logout', function() {
 	HelloWorldController::logout();
 }
 );
+$routes->get('/signin', function() {
+	SigninController::signin();
+});
 $routes->get('/hiekkalaatikko', function() {
 	HelloWorldController::sandbox();
 }
