@@ -10,7 +10,7 @@ CREATE TABLE Askare(
   info varchar(200) NOT NULL,
   deadline DATE NOT NULL,
   tarkeysaste INTEGER,
-  kayttaja varchar(50) REFERENCES Kayttaja
+  kayttajaid INTEGER REFERENCES Kayttaja
 );
 CREATE TABLE Luokka(
   name varchar(50) PRIMARY KEY NOT NULL
@@ -18,7 +18,7 @@ CREATE TABLE Luokka(
 CREATE TABLE Muistilista(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
-  kayttaja varchar(50) REFERENCES Kayttaja
+  kayttajaid INTEGER REFERENCES Kayttaja
 );
 CREATE TABLE AskareMuistilista(
   id SERIAL PRIMARY KEY,
