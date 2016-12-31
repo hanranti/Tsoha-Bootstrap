@@ -1,20 +1,26 @@
 <?php
 
 $routes->get('/', function() {
-    HelloWorldController::index();
-});
+	HelloWorldController::index();
+}
+);
 $routes->get('/user:id', function($id) {
-    UserController::user($id);
-});
+	UserController::user($id);
+}
+);
 $routes->get('/chore/:id', function($id) {
-    ChoreController::chore($id);
-});
+	ChoreController::chore($id);
+}
+);
 $routes->get('/signup', function() {
-    HelloWorldController::signup();
-});
+	HelloWorldController::signup();
+}
+);
 $routes->get('/logout', function() {
-    HelloWorldController::logout();
-});
+	HelloWorldController::logout();
+}
+);
 $routes->get('/hiekkalaatikko', function() {
-    HelloWorldController::sandbox();
-});
+	HelloWorldController::sandbox();
+}
+);
