@@ -1,6 +1,7 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
 CREATE TABLE Kayttaja(
-  name varchar(50) PRIMARY KEY NOT NULL,
+  id SERIAL PRIMARY KEY,
+  name varchar(50) NOT NULL,
   password varchar(50) NOT NULL
 );
 CREATE TABLE Askare(

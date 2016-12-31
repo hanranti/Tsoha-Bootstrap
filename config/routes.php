@@ -3,8 +3,8 @@
 $routes->get('/', function() {
     HelloWorldController::index();
 });
-$routes->get('/user', function() {
-    HelloWorldController::user();
+$routes->get('/user:id', function($id) {
+    UserController::user($id);
 });
 $routes->get('/chore/:id', function($id) {
     ChoreController::chore($id);
