@@ -1,14 +1,6 @@
 {% extends "suunnitelmat/default.html" %} {% block content %}
 <div>
-    <h1>Kirjaudu:</h1>
-    <p>
-        <label>Käyttäjätunnus</label>
-        <input name="Käyttäjätunnus" type="text">
-    </p>
-    <p>
-        <label>Salasana</label>
-        <input name="password" type="password" ng-model="password">
-    </p>
-    <button class="btn btn-success">Kirjaudu</button>
+    <h1>Muistilista</h1>
+    <p>Käyttäjiä {{userCount}}</p>
 </div>
 {% endblock %}

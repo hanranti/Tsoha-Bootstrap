@@ -29,7 +29,7 @@ class Askare extends BaseModel {
 		return NULL;
 	}
 	
-	public static function AllByUser($kayttaja) {
+	public static function allByUser($kayttaja) {
 		$query = DB::connection()->prepare('SELECT * FROM Askare WHERE kayttaja = :kayttaja');
 		$query->execute(array('kayttaja' => $kayttaja));
 		$rows = $query->fetchAll();
