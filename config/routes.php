@@ -12,6 +12,14 @@ $routes->get('/chore/:id', function($id) {
 	ChoreController::chore($id);
 }
 );
+$routes->get('/chore/:id/edit', function($id) {
+        ChoreController::edit($id);
+}
+);
+$routes->get('/addchore', function() {
+        ChoreController::add();
+}
+);
 $routes->get('/signup', function() {
 	HelloWorldController::signup();
 }
@@ -22,7 +30,8 @@ $routes->get('/logout', function() {
 );
 $routes->get('/signin', function() {
 	SigninController::signin();
-});
+}
+);
 $routes->get('/hiekkalaatikko', function() {
 	HelloWorldController::sandbox();
 }

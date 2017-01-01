@@ -18,7 +18,18 @@ class ChoreController extends BaseController {
 		
 		View::make('suunnitelmat/chore.html', array(
 		            'chore' => $chore,
-		             'classes' => $classes));
+		            'classes' => $classes));
 	}
-	
+
+	public static function edit($id) {
+                $chore = Askare::find($id);
+                $classes = AskareLuokka::allByChore($id);
+                View::make('suunnitelmat/editChore.html', array(
+                            'chore' => $chore,
+                            'classes' => $classes));
+        }
+
+        public static function add() {
+                View::make('suunnitelmat/addChore.html', array();
+        }
 }
