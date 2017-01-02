@@ -3,9 +3,9 @@
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://hanranti.users.cs.helsinki.fi/tsoha)
-  * [Askare](https://hanranti.users.cs.helsinki.fi/tsoha/chore)
+  * [Askare](https://hanranti.users.cs.helsinki.fi/tsoha/chore/1)
   * [Uusi Askare] (https://hanranti.users.cs.helsinki.fi/tsoha/addchore)
-  * [Käyttäjä](https://hanranti.users.cs.helsinki.fi/tsoha/user)
+  * [Käyttäjä](https://hanranti.users.cs.helsinki.fi/tsoha/user/1)
   * [Rekisteröityminen](https://hanranti.users.cs.helsinki.fi/tsoha/signup)
   * [Ulos kirjautuminen](https://hanranti.users.cs.helsinki.fi/tsoha/logout)
 
