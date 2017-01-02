@@ -1,24 +1,24 @@
  {% extends "suunnitelmat/default.html" %} {% block content %}
-<div class="row">
-    <div class="col-md-6">
-        <p>Askare <input name="chore" type="text" value="{{chore.name}}"></p>
-        <p>Tiedot <input name="details" type="text" value="{{chore.info}}"></p>
-        <p>Deadline <input name="deadline" type="text" value="{{chore.deadline}}"></p>
-        <input name="sendInformation" type="submit">
-        <h2>Lisää luokka</h2>
-        <input name="class" type="text">
-        <input name="sendClass" type="submit">
-        <p>Tärkeysaste <input name="tarkeysaste" type="text"></p>
-    </div>
-    <div class="col-md-6">
-	<h2>Luokat</h2>
-            <ul>
-                {% for luokka in classes%}
-                <li>{{luokka.name}}</li>
-                {% endfor %}
-            </ul>
+<div>
+    <div>
+        <form method="POST" action="{{base_path}}/addchore">
+            <div class="form-group">
+                <p>Askare <input name="name" class="form-control" type="text"></p>
+            </div>
+            <div class="form-group">
+                <p>Tiedot </p>
+                <textarea name="info" class="form-control" type="text"></textarea>
+            </div>
+            <div class="form-group">
+                <p>Deadline <input name="deadline" class="form-control" type="text"></p>
+            </div>
+            <div class="form-group">
+                <p>Tärkeysaste <input name="tarkeysaste" type="text"></p>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lisää</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
-~                                                                                                                                              
-~           

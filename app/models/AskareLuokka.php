@@ -4,6 +4,8 @@ require 'app/models/Luokka.php';
 
 class AskareLuokka extends BaseModel {
 
+    public $id, $askareid, $luokka;
+
     public function _construct($attributes) {
 		parent::__construct($attributes);
 	}

@@ -15,7 +15,7 @@
         <tbody>
             {% for chore in chores %}
             <tr>
-                <td><a href="http://hanranti.users.cs.helsinki.fi/tsoha/chore/{{chore.id}}">{{chore.name}}</a></td>
+                <td><a href="{{base_path}}/chore/{{chore.id}}">{{chore.name}}</a></td>
                 <td>{{chore.info}}</td>
                 <td>{{chore.tarkeysaste}}</td>
                 <td></td>
@@ -23,7 +23,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <h1>Muistilista luokittain</h1>
+<!--    <h1>Muistilista luokittain</h1>
     <table class="table table-striped table-hover">
         <thead>
             <tr>
@@ -35,11 +35,12 @@
             </tr>
         </thead>
         <tbody>
+            {% for chore2 in choresGroupByClass%}
             <tr>
-
+                <td></td>
             </tr>
         </tbody>
-    </table>
-    <a href="http://hanranti.users.cs.helsinki.fi/tsoha/addchore">Lisää askare</a>
+    </table> -->
+    <a href="{{base_path}}/addchore">Lisää askare</a>
 </div>
 {% endblock %}

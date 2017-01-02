@@ -82,4 +82,10 @@ class Askare extends BaseModel {
 
 		return NULL;
 	}
+	public function save() {
+		$query = DB::connection()->prepare('INSERT INTO Askare (name, info, deadline, tarkeysaste) VALUES (:name, :info, :deadline, :tarkeysaste) RETURNING id');
+		$query->execute(array('name' => $this->name, 'info' => $this->info, 'deadline' => $this->deadline, 'tarkeysaste' => $this->tarkeysaste));
+		$row = $query->fetch();
+		$this->id = $row['id'];
+	}
 }

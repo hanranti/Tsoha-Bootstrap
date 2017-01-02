@@ -17,19 +17,34 @@ class ChoreController extends BaseController {
 		$classes = AskareLuokka::allByChore($id);
 		
 		View::make('suunnitelmat/chore.html', array(
-		            'chore' => $chore,
-		            'classes' => $classes));
+				            'chore' => $chore,
+				            'classes' => $classes));
+	}
+	
+	public static function edit($id) {
+		$chore = Askare::find($id);
+		$classes = AskareLuokka::allByChore($id);
+		View::make('suunnitelmat/editChore.html', array(
+		                            'chore' => $chore,
+		                            'classes' => $classes));
+	}
+	
+	public static function add() {
+		View::make('suunnitelmat/addChore.html', array());
 	}
 
-	public static function edit($id) {
-                $chore = Askare::find($id);
-                $classes = AskareLuokka::allByChore($id);
-                View::make('suunnitelmat/editChore.html', array(
-                            'chore' => $chore,
-                            'classes' => $classes));
-        }
+	public static function store() {
+		$params = $_POST;
 
-        public static function add() {
-                View::make('suunnitelmat/addChore.html', array();
-        }
+		$chore = new Askare(array(
+			'name' => $params['name'],
+			'info' => $params['info'],
+			'deadline' => $params['deadline'],
+			'tarkeysaste' => $params['tarkeysaste']
+		));
+
+		$chore->save();
+
+		Redirect::to('/chore/' . $chore->id, array('message' => 'Askare on lisätty tietokantaan'));
+	}
 }

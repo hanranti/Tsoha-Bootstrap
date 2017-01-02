@@ -1,6 +1,8 @@
 <?php
 
 class Kayttaja extends BaseModel {
+
+	public $id, $name, $password;
 	
 	public function _construct($attributes) {
 		parent::__construct($attributes);

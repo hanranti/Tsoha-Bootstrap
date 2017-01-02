@@ -4,7 +4,7 @@ $routes->get('/', function() {
 	FrontController::front();
 }
 );
-$routes->get('/user:id', function($id) {
+$routes->get('/user/:id', function($id) {
 	UserController::user($id);
 }
 );
@@ -34,5 +34,9 @@ $routes->get('/signin', function() {
 );
 $routes->get('/hiekkalaatikko', function() {
 	HelloWorldController::sandbox();
+}
+);
+$routes->post('/addchore', function(){
+	ChoreController::store();
 }
 );

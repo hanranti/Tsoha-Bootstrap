@@ -4,6 +4,7 @@ Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://hanranti.users.cs.helsinki.fi/tsoha)
   * [Askare](https://hanranti.users.cs.helsinki.fi/tsoha/chore)
+  * [Uusi Askare] (https://hanranti.users.cs.helsinki.fi/tsoha/addchore)
   * [Käyttäjä](https://hanranti.users.cs.helsinki.fi/tsoha/user)
   * [Rekisteröityminen](https://hanranti.users.cs.helsinki.fi/tsoha/signup)
   * [Ulos kirjautuminen](https://hanranti.users.cs.helsinki.fi/tsoha/logout)
