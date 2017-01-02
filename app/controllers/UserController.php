@@ -1,7 +1,7 @@
 <?php
 
 require 'app/models/Kayttaja.php';
-require 'app/models/Kayttaja.php';
+require 'app/models/Askare.php';
 
 class UserController extends BaseController {
 	public static function user($id){

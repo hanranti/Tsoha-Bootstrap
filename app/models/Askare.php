@@ -15,13 +15,13 @@ class Askare extends BaseModel {
 		
 		if ($row) {
 			$askare = new Askare(array(
-			                'id' => $row['id'],
-			                'name' => $row['name'],
-			                'info' => $row['info'],
-			                'deadline' => $row['deadline'],
-			                'tarkeysaste' => $row['tarkeysaste'],
-			                'kayttajaid' => $row['kayttajaid']
-			            ));
+						                'id' => $row['id'],
+						                'name' => $row['name'],
+						                'info' => $row['info'],
+						                'deadline' => $row['deadline'],
+						                'tarkeysaste' => $row['tarkeysaste'],
+						                'kayttajaid' => $row['kayttajaid']
+						            ));
 			
 			return $askare;
 		}
@@ -29,21 +29,21 @@ class Askare extends BaseModel {
 		return NULL;
 	}
 	
-	public static function allByUser($kayttaja) {
+	public static function allByUser($kayttajaid) {
 		$query = DB::connection()->prepare('SELECT * FROM Askare WHERE kayttajaid = :kayttajaid');
-		$query->execute(array('kayttaja' => $kayttaja));
+		$query->execute(array('kayttajaid' => $kayttajaid));
 		$rows = $query->fetchAll();
 		$askareet = array();
 		
 		foreach ($rows as $row) {
 			$askareet[] = new Askare(array(
-			                'id' => $row['id'],
-			                'name' => $row['kayttaja'],
-			                'info' => $row['info'],
-			                'deadline' => $row['deadline'],
-			                'tarkeysaste' => $row['tarkeysaste'],
-			                'kayttaja' => $row['kayttaja']
-			            ));
+						                'id' => $row['id'],
+						                'name' => $row['name'],
+						                'info' => $row['info'],
+						                'deadline' => $row['deadline'],
+						                'tarkeysaste' => $row['tarkeysaste'],
+						                'kayttajaid' => $row['kayttajaid']
+						            ));
 		}
 		
 		return $askareet;
@@ -57,13 +57,13 @@ class Askare extends BaseModel {
 		
 		foreach ($rows as $row) {
 			$askareet[] = Askare(array(
-			                'id' => $row['id'],
-			                'name' => $row['kayttaja'],
-			                'info' => $row['info'],
-			                'deadline' => $row['deadline'],
-			                'tarkeysaste' => $row['tarkeysaste'],
-			                'kayttajaid' => $row['kayttajaid']
-			            ));
+						                'id' => $row['id'],
+						                'name' => $row['kayttaja'],
+						                'info' => $row['info'],
+						                'deadline' => $row['deadline'],
+						                'tarkeysaste' => $row['tarkeysaste'],
+						                'kayttajaid' => $row['kayttajaid']
+						            ));
 		}
 		
 		return $askareet;
@@ -73,13 +73,13 @@ class Askare extends BaseModel {
 		$query = DB::connection()->prepare('SELECT COUNT(*) AS maara FROM Askare LIMIT 1');
 		$query->execute();
 		$row = $query->fetch();
-
+		
 		if ($row) {
 			$count = $row['maara'];
-
+			
 			return $count;
 		}
-
+		
 		return NULL;
 	}
 	public function save() {
