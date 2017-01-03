@@ -1,13 +1,13 @@
 <?php
 
-require 'app/models/Kayttaja.php';
-require 'app/models/Askare.php';
+require 'app/models/Visitor.php';
+require 'app/models/Chore.php';
 
 class FrontController extends BaseController {
 
     public static function front() {
-        $userCount = Kayttaja::count();
-        $choreCount = Askare::count();
+        $userCount = Visitor::count();
+        $choreCount = Chore::count();
 
         View::make('suunnitelmat/front.html', array(
             'userCount' => $userCount,

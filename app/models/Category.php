@@ -1,6 +1,8 @@
 <?php
 
-class Luokka extends BaseModel {
+class Category extends BaseModel {
+
+	public $name;
 	
 	public function _construct($attributes) {
 		parent::__construct($attributes);

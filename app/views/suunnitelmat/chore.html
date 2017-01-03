@@ -10,14 +10,14 @@
             <li>{{class.name}}</li>
             {% endfor %}
         </ul>
-        <p>Tärkeysaste: {{chore.tarkeysaste}}</p>
+        <p>Tärkeysaste: {{chore.importancedegree}}</p>
         <a href="{{base_path}}/chore/{{chore.id}}/edit">Muuta tietoja</a>
     </div>
     <div class="col-md-6">
         <h2>Luokat</h2>
         <ul>
-            {% for luokka in classes%}
-            <li>{{luokka.name}}</li>
+            {% for category in categories %}
+            <li>{{category.name}}</li>
             {% endfor %}
         </ul>
     </div>

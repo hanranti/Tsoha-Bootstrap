@@ -1,5 +1,4 @@
-{% extends "suunnitelmat/default.html" %}
-{% block content %}
+{% extends "suunnitelmat/default.html" %} {% block content %}
 <div>
     <h1>Rekisteröidy:</h1>
     <p>
@@ -8,11 +7,11 @@
     </p>
     <p>
         <label>Salasana</label>
-        <input name="password1" type="password" ng-model="password1">
+        <input name="password1" type="password">
     </p>
     <p>
         <label>Salasana uudestaan</label>
-        <input name="password2" type="password" ng-model="password2" ng-required ng-match="password1">
+        <input name="password2" type="password">
     </p>
     <button class="btn btn-success">Rekisteröidy</button>
 </div>

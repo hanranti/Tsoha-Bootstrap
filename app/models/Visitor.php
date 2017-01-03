@@ -1,6 +1,6 @@
 <?php
 
-class Kayttaja extends BaseModel {
+class Visitor extends BaseModel {
 	
 	public $id, $name, $password;
 	
@@ -9,30 +9,30 @@ class Kayttaja extends BaseModel {
 	}
 	
 	public static function find($id) {
-		$query = DB::connection()->prepare('SELECT * FROM Kayttaja WHERE id = :id LIMIT 1');
+		$query = DB::connection()->prepare('SELECT * FROM Visitor WHERE id = :id LIMIT 1');
 		$query->execute(array('id' => $id));
 		$row = $query->fetch();
 		
 		if ($row) {
-			$user = new Kayttaja(array(
+			$visitor = new Visitor(array(
 									                'id' => $row['id'],
 									                'name' => $row['name'],
 													'password' => ''
 									            ));
 			
-			return $user;
+			return $visitor;
 		}
 		
 		return NULL;
 	}
 	
 	public static function count(){
-		$query = DB::connection()->prepare('SELECT COUNT(*) AS maara FROM Kayttaja LIMIT 1');
+		$query = DB::connection()->prepare('SELECT COUNT(*) AS amount FROM Visitor LIMIT 1');
 		$query->execute();
 		$row = $query->fetch();
 		
 		if ($row) {
-			$count = $row['maara'];
+			$count = $row['amount'];
 			
 			return $count;
 		}

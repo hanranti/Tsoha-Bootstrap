@@ -1,32 +1,32 @@
 -- Lisää CREATE TABLE lauseet tähän tiedostoon
-CREATE TABLE Kayttaja(
+CREATE TABLE Visitor(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   password varchar(50) NOT NULL
 );
-CREATE TABLE Askare(
+CREATE TABLE Chore(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
   info varchar(200) NOT NULL,
   deadline DATE NOT NULL,
-  tarkeysaste INTEGER,
-  kayttajaid INTEGER REFERENCES Kayttaja
+  importancedegree INTEGER,
+  visitorid INTEGER REFERENCES Visitor(id)
 );
-CREATE TABLE Luokka(
+CREATE TABLE Category(
   name varchar(50) PRIMARY KEY NOT NULL
 );
-CREATE TABLE Muistilista(
+CREATE TABLE Checklist(
   id SERIAL PRIMARY KEY,
   name varchar(50) NOT NULL,
-  kayttajaid INTEGER REFERENCES Kayttaja
+  visitorid INTEGER REFERENCES Visitor(id)
 );
-CREATE TABLE AskareMuistilista(
+CREATE TABLE ChoreChecklist(
   id SERIAL PRIMARY KEY,
-  askareid INTEGER REFERENCES Askare(id),
-  muistilistaid INTEGER REFERENCES Muistilista(id)
+  choreid INTEGER REFERENCES Chore(id),
+  checklistid INTEGER REFERENCES Checklist(id)
 );
-CREATE TABLE AskareLuokka(
+CREATE TABLE ChoreCategory(
   id SERIAL PRIMARY KEY,
-  askareid INTEGER REFERENCES Askare(id),
-  luokka varchar(50) REFERENCES Luokka(name)
+  choreid INTEGER REFERENCES Chore(id),
+  category varchar(50) REFERENCES Category(name)
 );
