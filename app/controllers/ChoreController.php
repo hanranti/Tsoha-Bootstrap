@@ -10,6 +10,8 @@ class ChoreController extends BaseController {
         $chore = Chore::find(1);
         Kint::dump($chores);
         Kint::dump($chore);
+
+        View::make('helloworld.html');
     }
 
     public static function chore($id) {
@@ -36,6 +38,13 @@ class ChoreController extends BaseController {
     public static function store() {
         $params = $_POST;
 
+        $attributes = array(
+            'name' => $params['name'],
+            'info' => $params['info'],
+            'deadline' => $params['deadline'],
+            'importancedegree' => $params['importancedegree']
+        );
+
         $chore = new Chore(array(
             'name' => $params['name'],
             'info' => $params['info'],
@@ -50,8 +59,11 @@ class ChoreController extends BaseController {
             $chore->save();
             Redirect::to('/chore/' . $chore->id, array('message' => 'Askare on lisätty tietokantaan'));
         } else {
-            View::make('/addchore/', array('errors' => $errors));
+            View::make('suunnitelmat/addChore.html', array('errors' => $errors));
         }
     }
 
+    public function update() {
+        
+    }
 }

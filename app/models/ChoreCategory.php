@@ -7,8 +7,9 @@ class ChoreCategory extends BaseModel {
     public $id, $choreid, $category;
 
     public function _construct($attributes) {
-		parent::__construct($attributes);
-	}
+        parent::__construct($attributes);
+        $this->validators = array();
+    }
 
     public static function allByChore($choreid) {
         $query = DB::connection()->prepare('SELECT * FROM ChoreCategory WHERE choreid = :choreid');
@@ -25,4 +26,5 @@ class ChoreCategory extends BaseModel {
 
         return $categories;
     }
+
 }

@@ -1,42 +1,46 @@
 <?php
 
 $routes->get('/', function() {
-	FrontController::front();
+    FrontController::front();
 }
 );
 $routes->get('/user/:id', function($id) {
-	UserController::user($id);
+    UserController::user($id);
 }
 );
 $routes->get('/chore/:id', function($id) {
-	ChoreController::chore($id);
+    ChoreController::chore($id);
 }
 );
 $routes->get('/chore/:id/edit', function($id) {
-        ChoreController::edit($id);
+    ChoreController::edit($id);
 }
 );
 $routes->get('/addchore', function() {
-        ChoreController::add();
+    ChoreController::add();
 }
 );
 $routes->get('/signup', function() {
-	HelloWorldController::signup();
+    HelloWorldController::signup();
 }
 );
 $routes->get('/logout', function() {
-	HelloWorldController::logout();
+    HelloWorldController::logout();
 }
 );
 $routes->get('/signin', function() {
-	SigninController::signin();
+    SigninController::signin();
 }
 );
 $routes->get('/hiekkalaatikko', function() {
-	HelloWorldController::sandbox();
+    HelloWorldController::sandbox();
 }
 );
-$routes->post('/addchore', function(){
-	ChoreController::store();
+$routes->post('/addchore', function() {
+    ChoreController::store();
+}
+);
+$routes->post('/chore/:id/edit', function ($id) {
+    ChoreController::update();
 }
 );
