@@ -41,6 +41,14 @@ $routes->post('/addchore', function() {
 }
 );
 $routes->post('/chore/:id/edit', function ($id) {
-    ChoreController::update();
+    ChoreController::update($id);
+}
+);
+$routes->post('/chore/:id/addcategory', function ($id) {
+    ChoreController::addCategory($id);
+}
+);
+$routes->post('/chore/:id/removecategory', function ($id) {
+    ChoreController::removeCategory($id);
 }
 );
