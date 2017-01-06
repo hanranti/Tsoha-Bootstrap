@@ -4,7 +4,7 @@ class Visitor extends BaseModel {
 
     public $id, $name, $password;
 
-    public function _construct($attributes) {
+    public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array();
     }

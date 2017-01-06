@@ -4,7 +4,7 @@ class Category extends BaseModel {
 
     public $name;
 
-    public function _construct($attributes) {
+    public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array();
     }
