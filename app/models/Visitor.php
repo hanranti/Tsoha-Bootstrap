@@ -26,7 +26,8 @@ class Visitor extends BaseModel {
     }
     
     public static function find($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Visitor WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare(
+            'SELECT * FROM Visitor WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
         
@@ -44,7 +45,8 @@ class Visitor extends BaseModel {
     }
     
     public static function count() {
-        $query = DB::connection()->prepare('SELECT COUNT(*) AS amount FROM Visitor LIMIT 1');
+        $query = DB::connection()->prepare(
+            'SELECT COUNT(*) AS amount FROM Visitor LIMIT 1');
         $query->execute();
         $row = $query->fetch();
         

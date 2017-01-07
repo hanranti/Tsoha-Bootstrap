@@ -20,7 +20,11 @@
                 <td><a href="{{base_path}}/chore/{{chore.id}}">{{chore.name}}</a></td>
                 <td>{{chore.info}}</td>
                 <td>{{chore.importancedegree}}</td>
-                <td></td>
+                <td>
+                    {% for category in categories %}
+                    {{category.name}}, 
+                    {% endfor %}
+                </td>
                 <td>{{chore.deadline}}</td>
                 <td>{{forms.destroy_button("#{base_path}/user/#{user.id}/destroychore/#{chore.id}")}}</td>
             </tr>

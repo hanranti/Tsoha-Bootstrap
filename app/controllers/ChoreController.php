@@ -22,14 +22,16 @@ class ChoreController extends BaseController {
         'chore' => $chore,
         'categories' => $categories));
     }
-
+    
     public static function user($id){
         $user = Visitor::find($id);
         $chores = Chore::allByUser($id);
+        $categories = ChoreCategory::allByChore($id);
         
         View::make('suunnitelmat/user.html', array(
         'user' => $user,
-        'chores' => $chores));
+        'chores' => $chores,
+        'categories' => $categories));
     }
     
     public static function edit($id) {
@@ -46,8 +48,8 @@ class ChoreController extends BaseController {
     
     public static function store() {
         $params = $_POST;
-
-        $user = ChoreController::get_user_logged_in();
+        
+        $user = BaseController::get_user_logged_in();
         
         $attributes = array(
         'name' => $params['name'],
@@ -81,13 +83,19 @@ class ChoreController extends BaseController {
         
         $chore = new Chore($attributes);
         
+        $categories = ChoreCategory::allByChore($id);
+        
         $errors = $chore->errors();
         
         if (count($errors) == 0) {
             $chore->update($id);
-            Redirect::to('/chore/' . $id, array('message' => 'Askareen tiedot päivitettiin'));
+            Redirect::to('/chore/' . $id, array(
+            'message' => 'Askareen tiedot päivitettiin'));
         } else {
-            View::make('suunnitelmat/addChore.html', array('errors' => $errors));
+            View::make('suunnitelmat/editChore.html', array(
+            'errors' => $errors,
+            'chore' => $chore,
+            'categories' => $categories));
         }
     }
     public function addCategory($choreid) {
@@ -132,10 +140,10 @@ class ChoreController extends BaseController {
         }
         Redirect::to('/chore/' . $choreid, array('message' => 'Askare poistettiin luokasta!'));
     }
-
+    
     public function destroyChore($userid, $choreid) {
         $chore = new Chore(array(
-            'id' => $choreid
+        'id' => $choreid
         ));
         ChoreCategory::destroyAllByChore($choreid);
         $chore->destroy();
