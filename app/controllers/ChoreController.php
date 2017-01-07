@@ -104,11 +104,7 @@ class ChoreController extends BaseController {
         }
     }
     
-    public function removeCategory($choreid) {
-        $params = $_POST;
-        
-        $category = $params['category'];
-        
+    public function removeCategory($choreid, $category) {
         $category = new Category(array(
         'name' => $category
         ));
@@ -119,9 +115,18 @@ class ChoreController extends BaseController {
         ));
         
         $choreCategory->destroy();
-        if(ChoreCategory::countChores($category['name']) == 0) {
+        if(ChoreCategory::countChores($category) == 0) {
             $category->destroy();
         }
-        Redirect::to('/chore/' . $choreid, array('message' => 'Askare poistettiin luokasta'));
+        Redirect::to('/chore/' . $choreid, array('message' => 'Askare poistettiin luokasta!'));
+    }
+
+    public function destroyChore($userid, $choreid) {
+        $chore = new Chore(array(
+            'id' => $choreid
+        ));
+        ChoreCategory::destroyAllByChore($choreid);
+        $chore->destroy();
+        Redirect::to('/user/' . $userid, array('message' => 'Askare poistettiin!'));
     }
 }

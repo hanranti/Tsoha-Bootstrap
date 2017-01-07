@@ -98,10 +98,17 @@ class Chore extends BaseModel {
         $query = DB::connection()->prepare(
         'UPDATE Chore SET name = :name, info = :info,
         deadline = :deadline, importancedegree = :importancedegree
-		WHERE id = :id');
+        WHERE id = :id');
         $query-> execute(array('id' => $id, 'name' => $this->name, 'info' => $this->info,
         'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree));
         $row = $query->fetch();
+    }
+    
+    public function destroy () {
+        $query = DB::connection()->prepare(
+        'DELETE FROM Chore WHERE id = :id');
+        $query->execute(array('id' => $this->id));
+        $query->fetch();
     }
     
     public function validate_name() {

@@ -48,7 +48,11 @@ $routes->post('/chore/:id/addcategory', function ($id) {
     ChoreController::addCategory($id);
 }
 );
-$routes->post('/chore/:id/removecategory', function ($id) {
-    ChoreController::removeCategory($id);
+$routes->post('/chore/:choreid/removecategory/:category', function ($choreid, $category) {
+    ChoreController::removeCategory($choreid, $category);
+}
+);
+$routes->post('/user/:userid/destroychore/:choreid', function ($userid, $choreid) {
+    ChoreController::destroyChore($userid, $choreid);
 }
 );

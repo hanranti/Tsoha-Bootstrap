@@ -42,7 +42,7 @@
         <h2>Luokat</h2>
         <ul>
             {% for category in categories %}
-            <li>{{category.name}} {{forms.destroy_button("#{base_path}/chore/#{chore.id}/removecategory")}}</li>
+            <li>{{category.name}} {{forms.destroy_button("#{base_path}/chore/#{chore.id}/removecategory/#{category.name}")}}</li>
             {% endfor %}
         </ul>
     </div>

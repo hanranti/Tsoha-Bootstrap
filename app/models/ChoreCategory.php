@@ -32,7 +32,7 @@ class ChoreCategory extends BaseModel {
         $query = DB::connection()->prepare(
         'SELECT COUNT(*) AS amount FROM ChoreCategory
         WHERE category = :category');
-        $query->execute(array('category' => $category));
+        $query->execute(array('category' => $category->name));
         $row = $query->fetch();
         return $row['amount'];
     }
@@ -47,10 +47,19 @@ class ChoreCategory extends BaseModel {
     }
     
     public function destroy() {
-        $query = db::connection()->prepare(
+        $query = DB::connection()->prepare(
         'DELETE FROM ChoreCategory WHERE category = :category');
         $query->execute(array(
-        'category' => $this->category
+        'category' => $this->category->name
+        ));
+        $query->fetch();
+    }
+    
+    public function destroyAllByChore($choreid) {
+        $query = DB::connection()->prepare(
+        'DELETE FROM ChoreCategory WHERE choreid = :choreid');
+        $query->execute(array(
+        'choreid' => $choreid
         ));
         $query->fetch();
     }

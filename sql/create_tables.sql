@@ -15,16 +15,6 @@ CREATE TABLE Chore(
 CREATE TABLE Category(
   name varchar(50) PRIMARY KEY NOT NULL
 );
-CREATE TABLE Checklist(
-  id SERIAL PRIMARY KEY,
-  name varchar(50) NOT NULL,
-  visitorid INTEGER REFERENCES Visitor(id)
-);
-CREATE TABLE ChoreChecklist(
-  id SERIAL PRIMARY KEY,
-  choreid INTEGER REFERENCES Chore(id),
-  checklistid INTEGER REFERENCES Checklist(id)
-);
 CREATE TABLE ChoreCategory(
   id SERIAL PRIMARY KEY,
   choreid INTEGER REFERENCES Chore(id),
