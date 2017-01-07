@@ -157,6 +157,12 @@ class Chore extends BaseModel {
         if (!is_numeric($this->importancedegree))
             $errors[] = 'Tärkeysasteen tulee olla luku!';
         
+        if ($this->importancedegree < 0)
+            $errors[] = 'Tärkeysasteen tulee olla vähintään 0!';
+        
+        if($this->importancedegree > 100)
+            $errors[] = 'Tärkeysasteen tulee olla korkeintaan 100!';
+        
         return $errors;
     }
     

@@ -5,7 +5,7 @@ $routes->get('/', function() {
 }
 );
 $routes->get('/user/:id', function($id) {
-    UserController::user($id);
+    ChoreController::user($id);
 }
 );
 $routes->get('/chore/:id', function($id) {
@@ -29,7 +29,7 @@ $routes->get('/logout', function() {
 }
 );
 $routes->get('/signin', function() {
-    SigninController::signin();
+    UserController::signin();
 }
 );
 $routes->get('/hiekkalaatikko', function() {
@@ -54,5 +54,9 @@ $routes->post('/chore/:choreid/removecategory/:category', function ($choreid, $c
 );
 $routes->post('/user/:userid/destroychore/:choreid', function ($userid, $choreid) {
     ChoreController::destroyChore($userid, $choreid);
+}
+);
+$routes->post('/signin', function() {
+    UserController::handle_signin();
 }
 );

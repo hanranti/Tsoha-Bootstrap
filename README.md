@@ -1,6 +1,6 @@
 # Tietokantasovelluksen esittelysivu
 
-Yleisiä linkkejä:
+## Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://hanranti.users.cs.helsinki.fi/tsoha)
   * [Askare](https://hanranti.users.cs.helsinki.fi/tsoha/chore/1)
@@ -15,3 +15,6 @@ Yleisiä linkkejä:
 
 [Muistilista](http://advancedkittenry.github.io/suunnittelu_ja_tyoymparisto/aiheet/Muistilista.html) 
 
+## Kirjautuminen
+Käyttäjätunnus: Kalle
+Salasana: Kalle123

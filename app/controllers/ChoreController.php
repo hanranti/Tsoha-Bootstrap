@@ -22,6 +22,15 @@ class ChoreController extends BaseController {
         'chore' => $chore,
         'categories' => $categories));
     }
+
+    public static function user($id){
+        $user = Visitor::find($id);
+        $chores = Chore::allByUser($id);
+        
+        View::make('suunnitelmat/user.html', array(
+        'user' => $user,
+        'chores' => $chores));
+    }
     
     public static function edit($id) {
         $chore = Chore::find($id);
@@ -37,12 +46,15 @@ class ChoreController extends BaseController {
     
     public static function store() {
         $params = $_POST;
+
+        $user = ChoreController::get_user_logged_in();
         
         $attributes = array(
         'name' => $params['name'],
         'info' => $params['info'],
         'deadline' => $params['deadline'],
-        'importancedegree' => $params['importancedegree']
+        'importancedegree' => $params['importancedegree'],
+        'visitorid' => $user->id
         );
         
         $chore = new Chore($attributes);
