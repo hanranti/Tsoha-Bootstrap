@@ -1,5 +1,8 @@
  {% import "macros/forms.html" as forms %} 
- {% extends "suunnitelmat/default.html" %} {% block content %}
+ {% extends "suunnitelmat/default.html" %} {% block content %} 
+ {% for c in categoriesByChore %} 
+ <p>{% for category in c %} {{category.name}}, {% endfor %}</p>
+ {% endfor %}
 <div>
     <h1>Muistilista</h1>
     <h2>{{message}}</h2>
@@ -21,9 +24,7 @@
                 <td>{{chore.info}}</td>
                 <td>{{chore.importancedegree}}</td>
                 <td>
-                    {% for category in categories %}
-                    {{category.name}}, 
-                    {% endfor %}
+                    {% for category in categories %} {{category.name}}, {% endfor %}
                 </td>
                 <td>{{chore.deadline}}</td>
                 <td>{{forms.destroy_button("#{base_path}/user/#{user.id}/destroychore/#{chore.id}")}}</td>

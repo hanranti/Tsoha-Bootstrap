@@ -28,6 +28,21 @@ class ChoreCategory extends BaseModel {
         return $categories;
     }
     
+    public static function allByChoreByUser($visitorid) {
+        $query = DB::connection()->prepare(
+        'SELECT id FROM Chore WHERE visitorid = :visitorid');
+        $query->execute(array('visitorid' => $visitorid));
+        $rows = $query->fetchAll();
+        
+        $categoriesByChore = array();
+        
+        foreach($rows as $row) {
+            $categoriesByChore[] = ChoreCategory::allByChore($row['id']);
+        }
+
+        return $categoriesByChore;
+    }
+    
     public static function countChores($category) {
         $query = DB::connection()->prepare(
         'SELECT COUNT(*) AS amount FROM ChoreCategory
@@ -42,7 +57,7 @@ class ChoreCategory extends BaseModel {
         'INSERT INTO ChoreCategory (choreid, category)
         VALUES (:choreid, :category)');
         $query->execute(array(
-        'choreid' => $this->choreid, 'category' => $this->category->name));
+        'choreid' => $this->choreid, 'category' => $this->category));
         $query->fetch();
     }
     
