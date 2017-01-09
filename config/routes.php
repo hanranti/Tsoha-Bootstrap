@@ -1,22 +1,26 @@
 <?php
 
+function check_logged_in() {
+    BaseController::check_logged_in();
+}
+
 $routes->get('/', function() {
     FrontController::front();
 }
 );
-$routes->get('/user/:id', function($id) {
+$routes->get('/user/:id', 'check_logged_in', function($id) {
     ChoreController::user($id);
 }
 );
-$routes->get('/chore/:id', function($id) {
+$routes->get('/chore/:id', 'check_logged_in', function($id) {
     ChoreController::chore($id);
 }
 );
-$routes->get('/chore/:id/edit', function($id) {
+$routes->get('/chore/:id/edit', 'check_logged_in', function($id) {
     ChoreController::edit($id);
 }
 );
-$routes->get('/addchore', function() {
+$routes->get('/addchore', 'check_logged_in', function() {
     ChoreController::add();
 }
 );
@@ -36,23 +40,23 @@ $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
 }
 );
-$routes->post('/addchore', function() {
+$routes->post('/addchore', 'check_logged_in', function() {
     ChoreController::store();
 }
 );
-$routes->post('/chore/:id/edit', function ($id) {
+$routes->post('/chore/:id/edit', 'check_logged_in', function ($id) {
     ChoreController::update($id);
 }
 );
-$routes->post('/chore/:id/addcategory', function ($id) {
+$routes->post('/chore/:id/addcategory', 'check_logged_in', function ($id) {
     ChoreController::addCategory($id);
 }
 );
-$routes->post('/chore/:choreid/removecategory/:category', function ($choreid, $category) {
+$routes->post('/chore/:choreid/removecategory/:category', 'check_logged_in', function ($choreid, $category) {
     ChoreController::removeCategory($choreid, $category);
 }
 );
-$routes->post('/user/:userid/destroychore/:choreid', function ($userid, $choreid) {
+$routes->post('/user/:userid/destroychore/:choreid', 'check_logged_in', function ($userid, $choreid) {
     ChoreController::destroyChore($userid, $choreid);
 }
 );

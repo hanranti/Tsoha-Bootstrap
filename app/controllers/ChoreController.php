@@ -54,14 +54,14 @@ class ChoreController extends BaseController {
     public static function store() {
         $params = $_POST;
         
-        $user = BaseController::get_user_logged_in();
+        $user = self::get_user_logged_in();
         
         $attributes = array(
         'name' => $params['name'],
         'info' => $params['info'],
         'deadline' => $params['deadline'],
         'importancedegree' => $params['importancedegree'],
-        'visitorid' => $user['id']
+        'visitorid' => $user->id
         );
         
         $chore = new Chore($attributes);
