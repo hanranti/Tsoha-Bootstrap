@@ -12,8 +12,8 @@ $routes->get('/user/:id', 'check_logged_in', function($id) {
     ChoreController::user($id);
 }
 );
-$routes->post('/user/:id/category/:category', 'check_logged_in', function($id, $category) {
-    ChoreController::userOnlyCategory($id, $category);
+$routes->post('/user/:id', 'check_logged_in', function($id) {
+    ChoreController::userOnlyCategory($id);
 }
 );
 $routes->get('/chore/:id', 'check_logged_in', function($id) {

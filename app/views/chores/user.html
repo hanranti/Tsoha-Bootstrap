@@ -1,49 +1,48 @@
- {% import "macros/forms.html" as forms %} 
- {% extends "default.html" %} {% block content %} 
+ {% import "macros/forms.html" as forms %} {% extends "default.html" %} {% block content %}
 <div>
     <h1>Muistilista</h1>
     <h2>{{message}}</h2>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Askare</th>
-                <th>Tiedot</th>
-                <th>Tärkeysaste</th>
-                <th>Deadline</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for chore in chores %}
-            <tr>
-                <td><a href="{{base_path}}/chore/{{chore.id}}">{{chore.name}}</a></td>
-                <td>{{chore.info}}</td>
-                <td>{{chore.importancedegree}}</td>
-                <td>{{chore.deadline}}</td>
-                <td>{{forms.destroy_button("#{base_path}/destroychore/#{chore.id}")}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <!--    <h1>Muistilista luokittain</h1>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <th>Luokka</th>
-                <th>Askare</th>
-                <th>Tiedot</th>
-                <th>Tärkeysaste</th>
-                <th>Deadline</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for chore2 in choresGroupByClass%}
-            <tr>
-                <td></td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table> -->
-    <a href="{{base_path}}/addchore">Lisää askare</a>
+    <div>
+        <div class="row">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Askare</th>
+                        <th>Tiedot</th>
+                        <th>Tärkeysaste</th>
+                        <th>Deadline</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for chore in chores %}
+                    <tr>
+                        <td><a href="{{base_path}}/chore/{{chore.id}}">{{chore.name}}</a></td>
+                        <td>{{chore.info}}</td>
+                        <td>{{chore.importancedegree}}</td>
+                        <td>{{chore.deadline}}</td>
+                        <td>{{forms.destroy_button("#{base_path}/destroychore/#{chore.id}")}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{{base_path}}/addchore">Lisää askare</a>
+        </div>
+        <div class="row col-md-3 pull-right">
+            <form method="POST" action="{{base_path}}/user/{{user.id}}">
+                <div class="form-group">
+                    <label>Rajaa askareet luokkaan:</label>
+                    <select class="form-control" name="category">
+                 {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+                {% endfor %}
+            </select>
+                </div>
+                <div>
+                    <button type="submit" class="form-control">Rajaa</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

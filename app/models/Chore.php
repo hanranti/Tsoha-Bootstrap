@@ -1,81 +1,82 @@
 <?php
 
 class Chore extends BaseModel {
-
+    
     public $id, $name, $info, $deadline, $importancedegree, $visitorid;
-
+    
     public function __construct($attributes) {
         parent::__construct($attributes);
         $this->validators = array('validate_name', 'validate_info', 'validate_deadline', 'validate_importancedegree');
     }
-
+    
     public static function find($id) {
         $query = DB::connection()->prepare('SELECT * FROM Chore WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
-
+        
         if ($row) {
             $Chore = new Chore(array(
-                'id' => $row['id'],
-                'name' => $row['name'],
-                'info' => $row['info'],
-                'deadline' => $row['deadline'],
-                'importancedegree' => $row['importancedegree'],
-                'visitorid' => $row['visitorid']
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'info' => $row['info'],
+            'deadline' => $row['deadline'],
+            'importancedegree' => $row['importancedegree'],
+            'visitorid' => $row['visitorid']
             ));
-
+            
             return $Chore;
         }
-
+        
         return NULL;
     }
-
+    
     public static function allByUser($visitorid) {
         $query = DB::connection()->prepare('SELECT * FROM Chore WHERE visitorid = :visitorid');
         $query->execute(array('visitorid' => $visitorid));
         $rows = $query->fetchAll();
-        $Choreet = array();
-
+        $chores = array();
+        
         foreach ($rows as $row) {
-            $Choreet[] = new Chore(array(
-                'id' => $row['id'],
-                'name' => $row['name'],
-                'info' => $row['info'],
-                'deadline' => $row['deadline'],
-                'importancedegree' => $row['importancedegree'],
-                'visitorid' => $row['visitorid']
+            $chores[] = new Chore(array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'info' => $row['info'],
+            'deadline' => $row['deadline'],
+            'importancedegree' => $row['importancedegree'],
+            'visitorid' => $row['visitorid']
             ));
         }
-
-        return $Choreet;
+        
+        return $chores;
     }
-
+    
     public static function all() {
         $query = DB::connection()->prepare('SELECT * FROM Chore');
         $query->execute();
         $rows = $query->fetchAll();
-        $Choreet = array();
-
+        
+        $chores = array();
+        
         foreach ($rows as $row) {
-            $Choreet[] = Chore(array(
-                'id' => $row['id'],
-                'name' => $row['name'],
-                'info' => $row['info'],
-                'deadline' => $row['deadline'],
-                'importancedegree' => $row['importancedegree'],
-                'visitorid' => $row['visitorid']
+            $chores[] = Chore(array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'info' => $row['info'],
+            'deadline' => $row['deadline'],
+            'importancedegree' => $row['importancedegree'],
+            'visitorid' => $row['visitorid']
             ));
         }
-
-        return $Choreet;
+        
+        return $chores;
     }
     
-     public static function allInCategoryByUser($category, $visitorid) {
+    public static function allInCategoryByUser($category, $visitorid) {
         $query = DB::connection()->prepare(
-                'SELECT * FROM Chore WHERE id IN
-                 (SELECT choreid FROM ChoreCategory
-                 WHERE category = :category) AND
-                 visitorid = :visitorid');
+        'SELECT * FROM Chore WHERE id IN
+        (SELECT choreid FROM ChoreCategory
+        WHERE category = :category) AND
+        visitorid = :visitorid');
         $query->execute(array('category' => $category, 'visitorid' => $visitorid));
         $rows = $query->fetchAll();
         
@@ -83,111 +84,111 @@ class Chore extends BaseModel {
         
         foreach ($rows as $row) {
             $chores[] = new Chore(array(
-                'name' => $row['name'],
-                'info' => $row['info'],
-                'deadline' => $row['deadline'],
-                'importancedegree' => $row['importancedegree'],
-                'visitorid' => $row['visitorid']
+            'name' => $row['name'],
+            'info' => $row['info'],
+            'deadline' => $row['deadline'],
+            'importancedegree' => $row['importancedegree'],
+            'visitorid' => $row['visitorid']
             ));
         }
     }
-
+    
     public static function count() {
         $query = DB::connection()->prepare('SELECT COUNT(*) AS amount FROM Chore LIMIT 1');
         $query->execute();
         $row = $query->fetch();
-
+        
         if ($row) {
             $count = $row['amount'];
-
+            
             return $count;
         }
-
+        
         return NULL;
     }
-
+    
     public function save() {
         $query = DB::connection()->prepare(
-                'INSERT INTO Chore (name, info, deadline, importancedegree, visitorid)
+        'INSERT INTO Chore (name, info, deadline, importancedegree, visitorid)
         VALUES (:name, :info, :deadline, :importancedegree, :visitorid) RETURNING id');
         $query->execute(array('name' => $this->name, 'info' => $this->info,
-            'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree,
-            'visitorid' => $this->visitorid));
+        'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree,
+        'visitorid' => $this->visitorid));
         $row = $query->fetch();
         $this->id = $row['id'];
     }
-
+    
     public function update($id) {
         $query = DB::connection()->prepare(
-                'UPDATE Chore SET name = :name, info = :info, deadline = :deadline,
-                    importancedegree = :importancedegree, :visitorid
+        'UPDATE Chore SET name = :name, info = :info, deadline = :deadline,
+        importancedegree = :importancedegree, visitorid = :visitorid
         WHERE id = :id');
         $query->execute(array('id' => $id, 'name' => $this->name, 'info' => $this->info,
-            'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree,
-            'visitorid' => $this->visitorid));
+        'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree,
+        'visitorid' => $this->visitorid));
         $row = $query->fetch();
     }
-
+    
     public function destroy() {
         $query = DB::connection()->prepare(
-                'DELETE FROM Chore WHERE id = :id');
+        'DELETE FROM Chore WHERE id = :id');
         $query->execute(array('id' => $this->id));
         $query->fetch();
     }
-
+    
     public function validate_name() {
         $errors = array();
-
+        
         if ($this->name == '' && $this->name == null)
             $errors[] = 'Nimi ei saa olla tyhjä!';
-
-
+        
+        
         if (strlen($this->name) < 3)
             $errors[] = 'Nimen tulee olla kolmea merkkiä pidempi!';
-
-
+        
+        
         return $errors;
     }
-
+    
     public function validate_info() {
         $errors = array();
-
+        
         if ($this->info == '' && $this->info == null)
             $errors[] = 'Tiedot-kohta ei saa olla tyhjä!';
-
-
+        
+        
         if (strlen($this->name) < 3)
             $errors[] = 'Tietojen tulee olla kolmea merkkiä pidempi!';
-
-
+        
+        
         return $errors;
     }
-
+    
     public function validate_deadline() {
         $errors = array();
-
+        
         if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $this->deadline))
-            $errors[] = 'Deadlinen tulee olla päivämäärä muotoa YYYY-MM-DD!';
-
+        $errors[] = 'Deadlinen tulee olla päivämäärä muotoa YYYY-MM-DD!';
+        
         return $errors;
     }
-
+    
     public function validate_importancedegree() {
         $errors = array();
-
+        
         if ($this->importancedegree == '' && $this->importancedegree == null)
             $errors[] = 'Tärkeysaste ei saa olla tyhjä!';
-
+        
         if (!is_numeric($this->importancedegree))
             $errors[] = 'Tärkeysasteen tulee olla luku!';
-
+        
         if ($this->importancedegree < 0)
             $errors[] = 'Tärkeysasteen tulee olla vähintään 0!';
-
+        
         if ($this->importancedegree > 100)
             $errors[] = 'Tärkeysasteen tulee olla korkeintaan 100!';
-
+        
         return $errors;
     }
-
+    
 }

@@ -28,30 +28,39 @@ class ChoreController extends BaseController {
     }
     
     public static function user($id) {
-        $user = Visitor::find($id);
-        $chores = Chore::allByUser($id);
         
         if (!self::isAuthorized($id)) {
             Redirect::to('/', array('message' => 'Ei käyttöoikeutta!'));
         }
         
+        $user = Visitor::find($id);
+        $chores = Chore::allByUser($id);
+        $categories = Category::allByUser($id);
+        
         View::make('chores/user.html', array(
         'user' => $user,
-        'chores' => $chores));
+        'chores' => $chores,
+        'categories' => $categories));
     }
     
-    public static function userOnlyCategory($userid, $category) {
+    public static function userOnlyCategory($userid) {
+        $params = $_POST;
         
         if (!self::isAuthorized($userid)) {
             Redirect::to('/', array('message' => 'Ei käyttöoikeutta!'));
         }
+        
+        $category = $params['category'];
         $user = Visitor::find($userid);
         $chores = Chore::allInCategoryByUser($category, $userid);
+        Kint::dump($chores);
+        View::make('chores/user.html');
+        $categories = Category::allByUser($userid);
         
         Redirect::to('/user/' . $userid, array(
-            'user' => $user,
-            'chores' => $chores
-        ))
+        'user' => $user,
+        'chores' => $chores,
+        'categories' => $categories));
     }
     
     public static function edit($id) {
@@ -92,7 +101,9 @@ class ChoreController extends BaseController {
             $chore->save();
             Redirect::to('/chore/' . $chore->id, array('message' => 'Askare on lisätty tietokantaan'));
         } else {
-            View::make('chores/addChore.html', array('errors' => $errors));
+            View::make('chores/addChore.html', array(
+            'errors' => $errors,
+            'chore' => $chore));
         }
     }
     

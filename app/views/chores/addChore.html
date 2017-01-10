@@ -12,17 +12,17 @@
         {% endif %}
         <form method="POST" action="{{base_path}}/addchore">
             <div class="form-group">
-                <p>Nimi <input name="name" class="form-control" type="text"></p>
+                <p>Nimi <input name="name" class="form-control" type="text" value="{{chore.name}}"></p>
             </div>
             <div class="form-group">
                 <p>Tiedot </p>
-                <textarea name="info" class="form-control" type="text"></textarea>
+                <textarea name="info" class="form-control" type="text" placeholder="{{chore.info}}"></textarea>
             </div>
             <div class="form-group">
-                <p>Deadline <input name="deadline" class="form-control" type="text"></p>
+                <p>Deadline <input name="deadline" class="form-control" type="text" value="{{chore.deadline}}"></p>
             </div>
             <div class="form-group">
-                <p>Tärkeysaste <input name="importancedegree" class="form-control" type="text"></p>
+                <p>Tärkeysaste <input name="importancedegree" class="form-control" type="text" value="{{chore.importancedegree}}"></p>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Lisää</button>

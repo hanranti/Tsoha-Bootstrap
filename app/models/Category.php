@@ -9,6 +9,26 @@ class Category extends BaseModel {
         $this->validators = array('validate_name');
     }
     
+    public static function allByUser($visitorid) {
+        $query = DB::connection()->prepare(
+        'SELECT * FROM Category WHERE name IN
+        (SELECT category FROM ChoreCategory
+        WHERE choreid IN (SELECT id FROM Chore
+        WHERE visitorid = :visitorid))' );
+        $query->execute(array('visitorid' => $visitorid));
+        $rows = $query->fetchAll();
+        
+        $categories = array();
+        
+        foreach($rows as $row) {
+            $categories[] = new Category(array(
+            'name' => $row['name']
+            ));
+        }
+
+        return $categories;
+    }
+    
     public function save() {
         $query = DB::connection()->prepare(
         'SELECT COUNT(*) as amount FROM Category
@@ -38,11 +58,11 @@ class Category extends BaseModel {
         $errors = array();
         
         if ($this->name == '' && $this->name == null)
-            $errors[] = 'Nimi ei saa olla tyhjä!';
+            $errors[] = 'Luoka nimi ei saa olla tyhjä!';
         
         
         if (strlen($this->name) < 3)
-            $errors[] = 'Nimen tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Luokan nimen tulee olla kolmea merkkiä pidempi!';
         
         
         return $errors;
