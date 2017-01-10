@@ -9,7 +9,7 @@ class FrontController extends BaseController {
         $userCount = Visitor::count();
         $choreCount = Chore::count();
 
-        View::make('suunnitelmat/front.html', array(
+        View::make('front.html', array(
             'userCount' => $userCount,
             'choreCount' => $choreCount
         ));

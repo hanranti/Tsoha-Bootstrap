@@ -25,11 +25,11 @@ $routes->get('/addchore', 'check_logged_in', function() {
 }
 );
 $routes->get('/signup', function() {
-    HelloWorldController::signup();
+    UserController::signup();
 }
 );
 $routes->get('/logout', function() {
-    HelloWorldController::logout();
+    UserController::loggedout();
 }
 );
 $routes->get('/signin', function() {
@@ -56,11 +56,15 @@ $routes->post('/chore/:choreid/removecategory/:category', 'check_logged_in', fun
     ChoreController::removeCategory($choreid, $category);
 }
 );
-$routes->post('/user/:userid/destroychore/:choreid', 'check_logged_in', function ($userid, $choreid) {
-    ChoreController::destroyChore($userid, $choreid);
+$routes->post('/destroychore/:choreid', 'check_logged_in', function ($choreid) {
+    ChoreController::destroyChore($choreid);
 }
 );
 $routes->post('/signin', function() {
     UserController::handle_signin();
+}
+);
+$routes->post('/logout', function() {
+    UserController::logout();
 }
 );

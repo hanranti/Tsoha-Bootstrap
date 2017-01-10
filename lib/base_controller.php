@@ -20,5 +20,12 @@
         Redirect::to('/signin', array('message' => 'Kirjaudu ensin sisään!'));
       }
     }
+    
+    public static function isAuthorized($userid) {
+        if (self::get_user_logged_in()->id == $userid) {
+            return true;
+        }
+        return false;
+    }
 
   }
