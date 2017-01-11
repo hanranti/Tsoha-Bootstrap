@@ -149,7 +149,7 @@ class Chore extends BaseModel {
             $errors[] = 'Nimen tulee olla kolmea merkkiä pidempi!';
         
         if (strlen($this->name) > 100)
-            $errors[] = 'Nimen tulee olla korkeintaan 100 merkkiä pitkä!'
+            $errors[] = 'Nimen tulee olla korkeintaan 100 merkkiä pitkä!';
         
         return $errors;
     }
@@ -165,7 +165,7 @@ class Chore extends BaseModel {
             $errors[] = 'Tietojen tulee olla kolmea merkkiä pidempi!';
         
         if (strlen($this->info) > 350)
-            $errors[] = 'Tietojen tulee olla korkeintaan 350 merkkiä pitkä!'
+            $errors[] = 'Tietojen tulee olla korkeintaan 350 merkkiä pitkä!';
         
         return $errors;
     }

@@ -72,3 +72,7 @@ $routes->post('/logout', function() {
     UserController::logout();
 }
 );
+$routes->post('/signup', function() {
+    UserController::handle_signup();
+}
+);

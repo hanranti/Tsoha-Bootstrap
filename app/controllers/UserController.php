@@ -36,4 +36,27 @@ class UserController extends BaseController {
         View::make('user/logout.html');
     }
 
+    public static function handle_signup() {
+        $params = $_POST;
+
+        $errors = array();
+        if ($params['password1'] != $params['password2'])
+            $errors[] = 'Salasanojen tulee olla samoja!';
+        if (Visitor::nameExists($params['name']))
+            $errors[] = 'Käyttäjätunnus on jo käytössä!';
+
+        $user = new Visitor(array(
+            'name' => $params['name'],
+            'password' => $params['password1']
+        ));
+
+        $errors = array_merge($errors, $user->errors());
+
+        if (count($errors) == 0) {
+            $user->save();
+            Redirect::to('/signin');
+        } else {
+            View::make('user/signup.html', array('errors' => $errors));
+        }
+    }
 }
