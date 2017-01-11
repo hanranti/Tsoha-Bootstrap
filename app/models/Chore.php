@@ -91,6 +91,8 @@ class Chore extends BaseModel {
             'visitorid' => $row['visitorid']
             ));
         }
+
+        return $chores;
     }
     
     public static function count() {
@@ -146,6 +148,8 @@ class Chore extends BaseModel {
         if (strlen($this->name) < 3)
             $errors[] = 'Nimen tulee olla kolmea merkkiä pidempi!';
         
+        if (strlen($this->name) > 100)
+            $errors[] = 'Nimen tulee olla korkeintaan 100 merkkiä pitkä!'
         
         return $errors;
     }
@@ -160,6 +164,8 @@ class Chore extends BaseModel {
         if (strlen($this->name) < 3)
             $errors[] = 'Tietojen tulee olla kolmea merkkiä pidempi!';
         
+        if (strlen($this->info) > 350)
+            $errors[] = 'Tietojen tulee olla korkeintaan 350 merkkiä pitkä!'
         
         return $errors;
     }

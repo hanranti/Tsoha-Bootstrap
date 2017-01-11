@@ -53,8 +53,6 @@ class ChoreController extends BaseController {
         $category = $params['category'];
         $user = Visitor::find($userid);
         $chores = Chore::allInCategoryByUser($category, $userid);
-        Kint::dump($chores);
-        View::make('chores/user.html');
         $categories = Category::allByUser($userid);
         
         Redirect::to('/user/' . $userid, array(
@@ -132,6 +130,7 @@ class ChoreController extends BaseController {
             Redirect::to('/chore/' . $id, array(
             'message' => 'Askareen tiedot päivitettiin'));
         } else {
+            $chore->id = $id;
             View::make('chores/editChore.html', array(
             'errors' => $errors,
             'chore' => $chore,

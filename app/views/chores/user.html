@@ -34,12 +34,17 @@
                     <label>Rajaa askareet luokkaan:</label>
                     <select class="form-control" name="category">
                  {% for category in categories %}
-                <option value="{{category.id}}">{{category.name}}</option>
+                <option value="{{category.name}}">{{category.name}}</option>
                 {% endfor %}
             </select>
                 </div>
                 <div>
                     <button type="submit" class="form-control">Rajaa</button>
+                </div>
+            </form>
+            <form method="GET" action="{{base_path}}/user/{{user.id}}">
+                <div class="form-group">
+                    <button type="submit" class="form-control">Näytä kaikki</button>
                 </div>
             </form>
         </div>
