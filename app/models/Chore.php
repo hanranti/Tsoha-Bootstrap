@@ -173,7 +173,8 @@ class Chore extends BaseModel {
     public function validate_deadline() {
         $errors = array();
         
-        if (!preg_match("/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/", $this->deadline))
+        //vanha: /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$
+        if (!preg_match("/^[0-9]{4}-(((01|03|05|07|08|10|12)-(0[1-9]|[1-2][0-9]|3[0-1]))|((04|06|09|11)-(0[1-9]|[1-2][0-9]|30))|(02-(0[1-9]|1[0-9]|2[0-8])))$/", $this->deadline))
         $errors[] = 'Deadlinen tulee olla päivämäärä muotoa YYYY-MM-DD!';
         
         return $errors;
