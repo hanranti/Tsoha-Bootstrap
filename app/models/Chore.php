@@ -15,7 +15,7 @@ class Chore extends BaseModel {
         $row = $query->fetch();
         
         if ($row) {
-            $Chore = new Chore(array(
+            $chore = new Chore(array(
             'id' => $row['id'],
             'name' => $row['name'],
             'info' => $row['info'],
@@ -24,7 +24,7 @@ class Chore extends BaseModel {
             'visitorid' => $row['visitorid']
             ));
             
-            return $Chore;
+            return $chore;
         }
         
         return NULL;
