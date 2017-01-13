@@ -123,11 +123,9 @@ class Chore extends BaseModel {
     public function update($id) {
         $query = DB::connection()->prepare(
         'UPDATE Chore SET name = :name, info = :info, deadline = :deadline,
-        importancedegree = :importancedegree, visitorid = :visitorid
-        WHERE id = :id');
+        importancedegree = :importancedegree WHERE id = :id');
         $query->execute(array('id' => $id, 'name' => $this->name, 'info' => $this->info,
-        'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree,
-        'visitorid' => $this->visitorid));
+        'deadline' => $this->deadline, 'importancedegree' => $this->importancedegree));
         $row = $query->fetch();
     }
     

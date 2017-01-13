@@ -166,7 +166,7 @@ class ChoreController extends BaseController {
             Redirect::to('/chore/' . $choreid, array('message' => 'Askare lisättiin luokkaan!'));
         } else {
             $chore = Chore::find($choreid);
-            $categories = ChoreCategory::allByChore($id);
+            $categories = ChoreCategory::allByChore($choreid);
             View::make('chores/editChore.html', array(
             'errors' => $errors,
             'chore' => $chore,
