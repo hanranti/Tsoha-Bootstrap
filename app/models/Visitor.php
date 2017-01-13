@@ -86,13 +86,16 @@ class Visitor extends BaseModel {
         $errors = array();
         
         if ($this->name == '' && $this->name == null)
-            $errors[] = 'Nimi ei saa olla tyhjä!';
+            $errors[] = 'Käyttäjätunnus ei saa olla tyhjä!';
+        
+        if (ctype_space($this->name))
+            $errors[] = 'Käyttäjätunnus ei saa koostua pelkistä tyhjämerkeistä!';
         
         if (strlen($this->name) < 3)
-            $errors[] = 'Nimen tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Käyttäjätunnuksen tulee olla kolmea merkkiä pidempi!';
         
         if (strlen($this->name) > 100) {
-            $errors[] = 'Nimen tulee olla korkeintaan 100 merkkiä pitkä!';
+            $errors[] = 'Käyttäjätunnuksen tulee olla korkeintaan 100 merkkiä pitkä!';
         }
         
         return $errors;

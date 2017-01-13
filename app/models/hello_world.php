@@ -1,8 +1,8 @@
 <?php
 
-  class HelloWorld extends BaseModel{
-
+class HelloWorld extends BaseModel{
+    
     public static function say_hi(){
-      return 'Hello World!';
+        return 'Hello World!';
     }
-  }
+}

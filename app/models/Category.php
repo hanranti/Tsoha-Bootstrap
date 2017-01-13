@@ -25,7 +25,7 @@ class Category extends BaseModel {
             'name' => $row['name']
             ));
         }
-
+        
         return $categories;
     }
     
@@ -58,12 +58,14 @@ class Category extends BaseModel {
         $errors = array();
         
         if ($this->name == '' && $this->name == null)
-            $errors[] = 'Luoka nimi ei saa olla tyhjä!';
+            $errors[] = 'Luokan nimi ei saa olla tyhjä!';
         
+        if (ctype_space($this->name))
+            $errors[] = 'Luokan nimi ei saa koostua pelkistä tyhjämerkeistä';
         
         if (strlen($this->name) < 3)
             $errors[] = 'Luokan nimen tulee olla kolmea merkkiä pidempi!';
-
+        
         if (strlen($this->name) > 100)
             $errors[] = 'Luokan nimen tulee olla korkeintaan 100 merkkiä pitkä!';
         

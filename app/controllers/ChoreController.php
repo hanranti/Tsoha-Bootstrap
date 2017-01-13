@@ -17,7 +17,7 @@ class ChoreController extends BaseController {
     public static function chore($id) {
         $chore = Chore::find($id);
         $categories = ChoreCategory::allByChore($id);
- 
+        
         if ($chore == null || !self::isAuthorized($chore->visitorid)) {
             Redirect::to('/', array('message' => 'Ei käyttöoikeutta!'));
         }
@@ -107,7 +107,7 @@ class ChoreController extends BaseController {
     
     public function update($id) {
         $params = $_POST;
-
+        
         $chore = Chore::find($id);
         
         if ($chore == null || !self::isAuthorized($chore->visitorid)) {

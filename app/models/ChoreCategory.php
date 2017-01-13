@@ -39,7 +39,7 @@ class ChoreCategory extends BaseModel {
         foreach($rows as $row) {
             $categoriesByChore[] = ChoreCategory::allByChore($row['id']);
         }
-
+        
         return $categoriesByChore;
     }
     
