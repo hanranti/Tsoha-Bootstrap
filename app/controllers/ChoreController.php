@@ -122,7 +122,6 @@ class ChoreController extends BaseController {
         );
         
         $chore = new Chore($attributes);
-        
         $categories = ChoreCategory::allByChore($id);
         
         $errors = $chore->errors();
@@ -166,7 +165,12 @@ class ChoreController extends BaseController {
             $choreCategory->save();
             Redirect::to('/chore/' . $choreid, array('message' => 'Askare lisättiin luokkaan!'));
         } else {
-            View::make('chores/editChore.html', array('errors' => $errors));
+            $chore = Chore::find($choreid);
+            $categories = ChoreCategory::allByChore($id);
+            View::make('chores/editChore.html', array(
+            'errors' => $errors,
+            'chore' => $chore,
+            'categories' => $categories));
         }
     }
     

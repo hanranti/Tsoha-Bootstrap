@@ -163,7 +163,7 @@ class Chore extends BaseModel {
             $errors[] = 'Tiedot-kohta ei saa olla tyhjä!';
         
         if (ctype_space($this->name))
-            $errors[] = 'Tiedot eivät saa koostua pelkistä tyhjämerkeistä!'
+            $errors[] = 'Tiedot eivät saa koostua pelkistä tyhjämerkeistä!';
         
         if (strlen($this->name) < 3)
             $errors[] = 'Tietojen tulee olla kolmea merkkiä pidempi!';
