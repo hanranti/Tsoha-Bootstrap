@@ -175,12 +175,33 @@ class Chore extends BaseModel {
     public function validate_deadline() {
         $errors = array();
         
-        //vanha: /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$
-        if (!preg_match("/^[0-9]{4}-(((01|03|05|07|08|10|12)-(0[1-9]|[1-2][0-9]|3[0-1]))|((04|06|09|11)-(0[1-9]|[1-2][0-9]|30))|(02-(0[1-9]|1[0-9]|2[0-8])))$/",
+        $isCorrectDate = false;
+        
+        if (preg_match("/^[0-9]{4}-(((01|03|05|07|08|10|12)-(0[1-9]|[1-2][0-9]|3[0-1]))|((04|06|09|11)-(0[1-9]|[1-2][0-9]|30))|(02-(0[1-9]|1[0-9]|2[0-9])))$/",
         $this->deadline)) {
+            //Check if deadline is leapyear-02-29
+            if (substr($this->deadline, 5, 2) == "02" && substr($this->deadline, 8, 2) == "29") {
+                $year = substr($this->deadline, 0, 4);
+                if ($year % 4 != 0) {
+                    $isCorrectDate = false;
+                } else if ($year % 100 != 0) {
+                    $isCorrectDate = true;
+                } else if ($year % 400 != 0) {
+                    $isCorrectDate = false;
+                } else {
+                    $isCorrectDate = true;
+                }
+            } else {
+                $isCorrectDate = false;
+            }
+        } else {
+            $isCorrectDate = false;
+        }
+        
+        if (!$isCorrectDate) {
             $errors[] = 'Deadlinen tulee olla päivämäärä muotoa YYYY-MM-DD!';
         }
-
+        
         return $errors;
     }
     
