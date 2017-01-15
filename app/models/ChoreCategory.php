@@ -21,8 +21,7 @@ class ChoreCategory extends BaseModel {
         
         foreach ($rows as $row) {
             $categories[] = new Category(array(
-            'name' => $row['category']
-            ));
+            'name' => $row['category']));
         }
         
         return $categories;
@@ -65,8 +64,7 @@ class ChoreCategory extends BaseModel {
         $query = DB::connection()->prepare(
         'DELETE FROM ChoreCategory WHERE category = :category');
         $query->execute(array(
-        'category' => $this->category->name
-        ));
+        'category' => $this->category->name));
         $query->fetch();
     }
     
@@ -74,8 +72,8 @@ class ChoreCategory extends BaseModel {
         $query = DB::connection()->prepare(
         'DELETE FROM ChoreCategory WHERE choreid = :choreid');
         $query->execute(array(
-        'choreid' => $choreid
-        ));
+        'choreid' => $choreid));
         $query->fetch();
     }
 }
+?>

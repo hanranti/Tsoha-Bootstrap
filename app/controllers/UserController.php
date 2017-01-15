@@ -47,8 +47,7 @@ class UserController extends BaseController {
         
         $user = new Visitor(array(
         'name' => $params['name'],
-        'password' => $params['password1']
-        ));
+        'password' => $params['password1']));
         
         $errors = array_merge($errors, $user->errors());
         
@@ -60,3 +59,4 @@ class UserController extends BaseController {
         }
     }
 }
+?>

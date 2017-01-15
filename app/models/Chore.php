@@ -6,11 +6,13 @@ class Chore extends BaseModel {
     
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array('validate_name', 'validate_info', 'validate_deadline', 'validate_importancedegree');
+        $this->validators = array('validate_name', 'validate_info',
+        'validate_deadline', 'validate_importancedegree');
     }
     
     public static function find($id) {
-        $query = DB::connection()->prepare('SELECT * FROM Chore WHERE id = :id LIMIT 1');
+        $query = DB::connection()->prepare(
+        'SELECT * FROM Chore WHERE id = :id LIMIT 1');
         $query->execute(array('id' => $id));
         $row = $query->fetch();
         
@@ -21,8 +23,7 @@ class Chore extends BaseModel {
             'info' => $row['info'],
             'deadline' => $row['deadline'],
             'importancedegree' => $row['importancedegree'],
-            'visitorid' => $row['visitorid']
-            ));
+            'visitorid' => $row['visitorid']));
             
             return $chore;
         }
@@ -31,7 +32,8 @@ class Chore extends BaseModel {
     }
     
     public static function allByUser($visitorid) {
-        $query = DB::connection()->prepare('SELECT * FROM Chore WHERE visitorid = :visitorid');
+        $query = DB::connection()->prepare(
+        'SELECT * FROM Chore WHERE visitorid = :visitorid');
         $query->execute(array('visitorid' => $visitorid));
         $rows = $query->fetchAll();
         $chores = array();
@@ -43,15 +45,15 @@ class Chore extends BaseModel {
             'info' => $row['info'],
             'deadline' => $row['deadline'],
             'importancedegree' => $row['importancedegree'],
-            'visitorid' => $row['visitorid']
-            ));
+            'visitorid' => $row['visitorid']));
         }
         
         return $chores;
     }
     
     public static function all() {
-        $query = DB::connection()->prepare('SELECT * FROM Chore');
+        $query = DB::connection()->prepare(
+        'SELECT * FROM Chore');
         $query->execute();
         $rows = $query->fetchAll();
         
@@ -64,8 +66,7 @@ class Chore extends BaseModel {
             'info' => $row['info'],
             'deadline' => $row['deadline'],
             'importancedegree' => $row['importancedegree'],
-            'visitorid' => $row['visitorid']
-            ));
+            'visitorid' => $row['visitorid']));
         }
         
         return $chores;
@@ -77,7 +78,9 @@ class Chore extends BaseModel {
         (SELECT choreid FROM ChoreCategory
         WHERE category = :category) AND
         visitorid = :visitorid');
-        $query->execute(array('category' => $category, 'visitorid' => $visitorid));
+        $query->execute(array(
+        'category' => $category,
+        'visitorid' => $visitorid));
         $rows = $query->fetchAll();
         
         $chores = array();
@@ -88,15 +91,15 @@ class Chore extends BaseModel {
             'info' => $row['info'],
             'deadline' => $row['deadline'],
             'importancedegree' => $row['importancedegree'],
-            'visitorid' => $row['visitorid']
-            ));
+            'visitorid' => $row['visitorid']));
         }
         
         return $chores;
     }
     
     public static function count() {
-        $query = DB::connection()->prepare('SELECT COUNT(*) AS amount FROM Chore LIMIT 1');
+        $query = DB::connection()->prepare(
+        'SELECT COUNT(*) AS amount FROM Chore LIMIT 1');
         $query->execute();
         $row = $query->fetch();
         
@@ -224,3 +227,4 @@ class Chore extends BaseModel {
     }
     
 }
+?>

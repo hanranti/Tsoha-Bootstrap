@@ -11,7 +11,7 @@ class FrontController extends BaseController {
         
         View::make('front.html', array(
         'userCount' => $userCount,
-        'choreCount' => $choreCount
-        ));
+        'choreCount' => $choreCount));
     }
 }
+?>

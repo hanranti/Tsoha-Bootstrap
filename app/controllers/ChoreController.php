@@ -88,8 +88,7 @@ class ChoreController extends BaseController {
         'info' => $params['info'],
         'deadline' => $params['deadline'],
         'importancedegree' => $params['importancedegree'],
-        'visitorid' => $user->id
-        );
+        'visitorid' => $user->id);
         
         $chore = new Chore($attributes);
         
@@ -118,8 +117,7 @@ class ChoreController extends BaseController {
         'name' => $params['name'],
         'info' => $params['info'],
         'deadline' => $params['deadline'],
-        'importancedegree' => $params['importancedegree']
-        );
+        'importancedegree' => $params['importancedegree']);
         
         $chore = new Chore($attributes);
         $categories = ChoreCategory::allByChore($id);
@@ -149,13 +147,11 @@ class ChoreController extends BaseController {
         $category = $params['category'];
         
         $category = new Category(array(
-        'name' => $category
-        ));
+        'name' => $category));
         
         $choreCategory = new ChoreCategory(array(
         'choreid' => $choreid,
-        'category' => $category->name
-        ));
+        'category' => $category->name));
         
         $errors = $category->errors();
         $errors = array_merge($errors, $choreCategory->errors());
@@ -181,13 +177,11 @@ class ChoreController extends BaseController {
         }
         
         $category = new Category(array(
-        'name' => $category
-        ));
+        'name' => $category));
         
         $choreCategory = new ChoreCategory(array(
         'choreid' => $choreid,
-        'category' => $category
-        ));
+        'category' => $category));
         
         $choreCategory->destroy();
         if (ChoreCategory::countChores($category) == 0) {
@@ -203,11 +197,12 @@ class ChoreController extends BaseController {
         }
         
         $chore = new Chore(array(
-        'id' => $choreid
-        ));
+        'id' => $choreid));
+        
         ChoreCategory::destroyAllByChore($choreid);
         $chore->destroy();
         Redirect::to('/user/' . self::get_user_logged_in()->id, array('message' => 'Askare poistettiin!'));
     }
     
 }
+?>

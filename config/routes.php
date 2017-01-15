@@ -12,10 +12,6 @@ $routes->get('/user/:id', 'check_logged_in', function($id) {
     ChoreController::user($id);
 }
 );
-$routes->post('/user/:id', 'check_logged_in', function($id) {
-    ChoreController::userOnlyCategory($id);
-}
-);
 $routes->get('/chore/:id', 'check_logged_in', function($id) {
     ChoreController::chore($id);
 }
@@ -42,6 +38,10 @@ $routes->get('/signin', function() {
 );
 $routes->get('/hiekkalaatikko', function() {
     HelloWorldController::sandbox();
+}
+);
+$routes->post('/user/:id', 'check_logged_in', function($id) {
+    ChoreController::userOnlyCategory($id);
 }
 );
 $routes->post('/addchore', 'check_logged_in', function() {
@@ -76,3 +76,4 @@ $routes->post('/signup', function() {
     UserController::handle_signup();
 }
 );
+?>

@@ -18,8 +18,7 @@ class Visitor extends BaseModel {
             return new Visitor(array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'password' => ''
-            ));
+            'password' => ''));
         }else{
             return null;
         }
@@ -35,8 +34,7 @@ class Visitor extends BaseModel {
             $visitor = new Visitor(array(
             'id' => $row['id'],
             'name' => $row['name'],
-            'password' => ''
-            ));
+            'password' => ''));
             
             return $visitor;
         }
@@ -117,3 +115,4 @@ class Visitor extends BaseModel {
         return $errors;
     }
 }
+?>

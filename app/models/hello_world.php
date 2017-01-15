@@ -6,3 +6,4 @@ class HelloWorld extends BaseModel{
         return 'Hello World!';
     }
 }
+?>

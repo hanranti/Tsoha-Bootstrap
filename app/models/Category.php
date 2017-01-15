@@ -22,8 +22,7 @@ class Category extends BaseModel {
         
         foreach($rows as $row) {
             $categories[] = new Category(array(
-            'name' => $row['name']
-            ));
+            'name' => $row['name']));
         }
         
         return $categories;
@@ -73,3 +72,4 @@ class Category extends BaseModel {
     }
     
 }
+?>
