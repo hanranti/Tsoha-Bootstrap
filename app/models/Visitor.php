@@ -102,13 +102,13 @@ class Visitor extends BaseModel {
     public function validate_password () {
         $errors = array();
         
-        if ($this->name == '' && $this->name == null)
+        if ($this->password == '' && $this->name == null)
             $errors[] = 'Salasana ei saa olla tyhjä!';
         
-        if (strlen($this->name) < 3)
+        if (strlen($this->password) < 3)
             $errors[] = 'Salasanan tulee olla kolmea merkkiä pidempi!';
         
-        if (strlen($this->name) > 100) {
+        if (strlen($this->password) > 100) {
             $errors[] = 'Salasanan tulee olla korkeintaan 100 merkkiä pitkä!';
         }
         
