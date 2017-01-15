@@ -55,7 +55,7 @@ class UserController extends BaseController {
             $user->save();
             Redirect::to('/signin');
         } else {
-            View::make('user/signup.html', array('errors' => $errors));
+            View::make('user/signup.html', array('errors' => $errors, 'name' => $params['name']));
         }
     }
 }
