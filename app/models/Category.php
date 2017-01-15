@@ -28,7 +28,7 @@ class Category extends BaseModel {
         return $categories;
     }
     
-    public function save() {
+    public static function categoryExists($category) {
         $query = DB::connection()->prepare(
         'SELECT COUNT(*) as amount FROM Category
         WHERE name = :name');
@@ -36,6 +36,14 @@ class Category extends BaseModel {
         'name' => $this->name));
         $row = $query->fetch();
         if ($row['amount'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function save() {
+        if (self::categoryExists($this->name)) {
             return;
         }
         $query = DB::connection()->prepare(

@@ -8,7 +8,7 @@ class ChoreCategory extends BaseModel {
     
     public function __construct($attributes) {
         parent::__construct($attributes);
-        $this->validators = array();
+        $this->validators = array('validate_all');
     }
     
     public static function allByChore($choreid) {
@@ -51,6 +51,21 @@ class ChoreCategory extends BaseModel {
         return $row['amount'];
     }
     
+    public static function choreCategoryExists($cid, $categoryname) {
+        $query = DB::connection()->prepare(
+        'SELECT COUNT(*) AS amount FROM choreCategoryExists
+        WHERE choreid = :cid AND category = :categoryname');
+        $query->execute(array(
+        'cid' => $cid,
+        'categoryname' => $categoryname));
+        $row = $query->fetch();
+        if ($row['amount'] > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public function save() {
         $query = DB::connection()->prepare(
         'INSERT INTO ChoreCategory (choreid, category)
@@ -75,5 +90,15 @@ class ChoreCategory extends BaseModel {
         'choreid' => $choreid));
         $query->fetch();
     }
+    
+    public function validate_all() {
+        $errors = array();
+        
+        if (self::choreCategoryExists($this->choreid, $this->category))
+            $errors[] = 'Askare kuuluu jo tähän luokkaan!';
+        
+        return $errors;
+    }
+    
 }
 ?>
