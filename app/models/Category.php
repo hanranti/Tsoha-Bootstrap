@@ -71,7 +71,7 @@ class Category extends BaseModel {
             $errors[] = 'Luokan nimi ei saa koostua pelkistä tyhjämerkeistä';
         
         if (strlen($this->name) < 3)
-            $errors[] = 'Luokan nimen tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Luokan nimen tulee olla vähintään kolme merkkiä pitkä!';
         
         if (strlen($this->name) > 100)
             $errors[] = 'Luokan nimen tulee olla korkeintaan 100 merkkiä pitkä!';

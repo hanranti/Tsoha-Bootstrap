@@ -90,7 +90,7 @@ class Visitor extends BaseModel {
             $errors[] = 'Käyttäjätunnus ei saa koostua pelkistä tyhjämerkeistä!';
         
         if (strlen($this->name) < 3)
-            $errors[] = 'Käyttäjätunnuksen tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Käyttäjätunnuksen tulee olla vähintään kolme merkkiä pitkä!';
         
         if (strlen($this->name) > 100) {
             $errors[] = 'Käyttäjätunnuksen tulee olla korkeintaan 100 merkkiä pitkä!';
@@ -106,7 +106,7 @@ class Visitor extends BaseModel {
             $errors[] = 'Salasana ei saa olla tyhjä!';
         
         if (strlen($this->password) < 3)
-            $errors[] = 'Salasanan tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Salasanan tulee olla vähintään kolme merkkiä pitkä!';
         
         if (strlen($this->password) > 100) {
             $errors[] = 'Salasanan tulee olla korkeintaan 100 merkkiä pitkä!';

@@ -150,7 +150,7 @@ class Chore extends BaseModel {
             $errors[] = 'Nimi ei saa koostua pelkistä tyhjämerkeistä!';
         
         if (strlen($this->name) < 3)
-            $errors[] = 'Nimen tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Nimen tulee olla vähintään kolme merkkiä pitkä!';
         
         if (strlen($this->name) > 100)
             $errors[] = 'Nimen tulee olla korkeintaan 100 merkkiä pitkä!';
@@ -168,7 +168,7 @@ class Chore extends BaseModel {
             $errors[] = 'Tiedot eivät saa koostua pelkistä tyhjämerkeistä!';
         
         if (strlen($this->info) < 3)
-            $errors[] = 'Tietojen tulee olla kolmea merkkiä pidempi!';
+            $errors[] = 'Tietojen tulee olla vähintään kolme merkkiä pitkä!';
         
         if (strlen($this->info) > 350)
             $errors[] = 'Tietojen tulee olla korkeintaan 350 merkkiä pitkä!';
