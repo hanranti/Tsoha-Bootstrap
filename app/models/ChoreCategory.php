@@ -77,9 +77,11 @@ class ChoreCategory extends BaseModel {
     
     public function destroy() {
         $query = DB::connection()->prepare(
-        'DELETE FROM ChoreCategory WHERE category = :category');
+        'DELETE FROM ChoreCategory WHERE choreid = :choreid
+        AND category = :category');
         $query->execute(array(
-        'category' => $this->category->name));
+        'choreid' => $this->choreid,
+        'category' => $this->category));
         $query->fetch();
     }
     

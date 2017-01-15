@@ -181,7 +181,7 @@ class ChoreController extends BaseController {
         
         $choreCategory = new ChoreCategory(array(
         'choreid' => $choreid,
-        'category' => $category));
+        'category' => $category->name));
         
         $choreCategory->destroy();
         if (ChoreCategory::countChores($category) == 0) {

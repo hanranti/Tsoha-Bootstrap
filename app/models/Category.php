@@ -33,7 +33,7 @@ class Category extends BaseModel {
         'SELECT COUNT(*) as amount FROM Category
         WHERE name = :name');
         $query->execute(array(
-        'name' => $this->name));
+        'name' => $category));
         $row = $query->fetch();
         if ($row['amount'] > 0) {
             return true;
