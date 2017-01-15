@@ -166,7 +166,8 @@ class ChoreController extends BaseController {
             View::make('chores/editChore.html', array(
             'errors' => $errors,
             'chore' => $chore,
-            'categories' => $categories));
+            'categories' => $categories,
+            'sendedCategory' => $category));
         }
     }
     
