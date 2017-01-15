@@ -53,7 +53,7 @@ class ChoreCategory extends BaseModel {
     
     public static function choreCategoryExists($cid, $categoryname) {
         $query = DB::connection()->prepare(
-        'SELECT COUNT(*) AS amount FROM choreCategoryExists
+        'SELECT COUNT(*) AS amount FROM ChoreCategory
         WHERE choreid = :cid AND category = :categoryname');
         $query->execute(array(
         'cid' => $cid,
