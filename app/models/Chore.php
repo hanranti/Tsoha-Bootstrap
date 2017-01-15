@@ -87,6 +87,7 @@ class Chore extends BaseModel {
         
         foreach ($rows as $row) {
             $chores[] = new Chore(array(
+            'id' =>$row['id'],
             'name' => $row['name'],
             'info' => $row['info'],
             'deadline' => $row['deadline'],
