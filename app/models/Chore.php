@@ -195,7 +195,7 @@ class Chore extends BaseModel {
                     $isCorrectDate = true;
                 }
             } else {
-                $isCorrectDate = false;
+                $isCorrectDate = true;
             }
         } else {
             $isCorrectDate = false;
